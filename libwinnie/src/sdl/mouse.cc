@@ -46,7 +46,6 @@ init_mouse()
   if (!(mouse = (Mouse *) malloc(sizeof *mouse))) {
     return false;
   }
-  get_subsys()->mouse_offset = (intptr_t) (mouse);
 
   memset(mouse, 0, sizeof *mouse);
   return true;

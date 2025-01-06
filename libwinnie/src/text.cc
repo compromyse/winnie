@@ -50,8 +50,6 @@ init_text()
     return false;
   }
 
-  get_subsys()->text_offset = (intptr_t) (text);
-
   if (FT_Init_FreeType(&text->ft_lib)) {
     fprintf(stderr, "Failed to initialize the FreeType library!\n");
     return false;

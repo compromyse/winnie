@@ -32,15 +32,9 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include "sdl/mouse.h"
 #include "winnie.h"
 
-static Subsys *subsys;
-
 bool
 winnie_init()
 {
-  if (!(subsys = (Subsys *) malloc(sizeof *subsys))) {
-    return false;
-  }
-
   if (!init_gfx()) {
     return false;
   }
@@ -73,15 +67,11 @@ winnie_shutdown()
   destroy_mouse();
   destroy_text();
   destroy_window_manager();
-
-  free(subsys);
 }
 
 bool
 winnie_open()
 {
-  subsys = (Subsys *) malloc(sizeof(Subsys));
-
   return true;
 }
 
@@ -105,10 +95,4 @@ winnie_get_time()
 
   return (tv.tv_usec - init_tv.tv_usec) / 1000
          + (tv.tv_sec - init_tv.tv_sec) * 1000;
-}
-
-Subsys *
-get_subsys()
-{
-  return subsys;
 }

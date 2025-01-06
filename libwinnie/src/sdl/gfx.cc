@@ -51,8 +51,6 @@ init_gfx()
     return false;
   }
 
-  get_subsys()->graphics_offset = (intptr_t) (gfx);
-
   Rect scr_rect(0, 0, 1280, 853);
   gfx->screen_rect = scr_rect;
   gfx->color_depth = 32;

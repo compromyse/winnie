@@ -51,8 +51,6 @@ init_window_manager()
 
   wm = new (wm_mem) WindowManager;
 
-  get_subsys()->wm_offset = (intptr_t) (wm);
-
   return true;
 }
 

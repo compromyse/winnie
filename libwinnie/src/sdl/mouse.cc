@@ -22,8 +22,10 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #ifdef WINNIE_SDL
 #include <SDL/SDL.h>
 
+#include <stdlib.h>
+#include <stdint.h>
+
 #include "sdl/mouse.h"
-#include "shalloc.h"
 #include "wm.h"
 #include "window.h"
 #include "winnie.h"
@@ -40,10 +42,10 @@ static Mouse *mouse;
 
 bool init_mouse()
 {
-	if(!(mouse = (Mouse*)sh_malloc(sizeof *mouse))) {
+	if(!(mouse = (Mouse*)malloc(sizeof *mouse))) {
 		return false;
 	}
-	get_subsys()->mouse_offset = (int)((char*)mouse - (char*)get_pool());
+	get_subsys()->mouse_offset = (intptr_t)(mouse);
 
 	memset(mouse, 0, sizeof *mouse);
 	return true;
@@ -51,17 +53,7 @@ bool init_mouse()
 
 void destroy_mouse()
 {
-	sh_free(mouse);
-}
-
-bool client_open_mouse(void *smem_start, int offset)
-{
-	mouse = (Mouse*)((unsigned char*)smem_start + offset);
-	return true;
-}
-
-void client_close_mouse()
-{
+	free(mouse);
 }
 
 void set_mouse_bounds(const Rect &rect)

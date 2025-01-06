@@ -23,9 +23,9 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include <stdio.h>
 #include <stdlib.h>
 #include <SDL/SDL.h>
+#include <stdint.h>
 
 #include "sdl/gfx.h"
-#include "shalloc.h"
 #include "winnie.h"
 
 static SDL_Surface *fbsurf;
@@ -46,11 +46,11 @@ bool init_gfx()
 		return false;
 	}
 
-	if(!(gfx = (Graphics*)sh_malloc(sizeof *gfx))) {
+	if(!(gfx = (Graphics*)malloc(sizeof *gfx))) {
 		return false;
 	}
 
-	get_subsys()->graphics_offset = (int)((char*)gfx - (char*)get_pool());
+	get_subsys()->graphics_offset = (intptr_t)(gfx);
 
 	Rect scr_rect(0, 0, 1280, 853);
 	gfx->screen_rect = scr_rect;
@@ -62,7 +62,7 @@ bool init_gfx()
 	}
 	SDL_ShowCursor(0);
 
-	if(!(gfx->pixmap = (Pixmap*)sh_malloc(sizeof(Pixmap)))) {
+	if(!(gfx->pixmap = (Pixmap*)malloc(sizeof(Pixmap)))) {
 		fprintf(stderr, "Failed to allocate pixmap.\n");
 		return false;
 	}
@@ -71,7 +71,7 @@ bool init_gfx()
 	gfx->pixmap->height = gfx->screen_rect.height;
 
 	int fbsize = gfx->pixmap->width * gfx->pixmap->height * gfx->color_depth / 8;
-	if(!(gfx->pixmap->pixels = (unsigned char*)sh_malloc(fbsize))) {
+	if(!(gfx->pixmap->pixels = (unsigned char*)malloc(fbsize))) {
 		fprintf(stderr, "failed to allocate the pixmap framebuffer.\n");
 		return false;
 	}
@@ -83,21 +83,11 @@ bool init_gfx()
 
 void destroy_gfx()
 {
-	sh_free(gfx->pixmap->pixels);
+	free(gfx->pixmap->pixels);
 	gfx->pixmap->pixels = 0;
-	sh_free(gfx->pixmap);
-	sh_free(gfx);
+	free(gfx->pixmap);
+	free(gfx);
 	SDL_Quit();
-}
-
-bool client_open_gfx(void *smem_start, int offset)
-{
-	gfx = (Graphics*)((unsigned char*)smem_start + offset);
-	return true;
-}
-
-void client_close_gfx()
-{
 }
 
 unsigned char *get_framebuffer()

@@ -19,11 +19,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Author: Eleni Maria Stea <elene.mst@gmail.com>
 */
 
+#include <stdlib.h>
 #include <ft2build.h>
 #include <freetype/freetype.h>
+#include <stdint.h>
 
 #include "sdl/gfx.h"
-#include "shalloc.h"
 #include "text.h"
 #include "winnie.h"
 
@@ -44,11 +45,11 @@ static Text *text;
 
 bool init_text()
 {
-	if(!(text = (Text*)sh_malloc(sizeof *text))) {
+	if(!(text = (Text*)malloc(sizeof *text))) {
 		return false;
 	}
 
-	get_subsys()->text_offset = (int)((char*)text - (char*)get_pool());
+	get_subsys()->text_offset = (intptr_t)(text);
 
 	if(FT_Init_FreeType(&text->ft_lib)) {
 		fprintf(stderr, "Failed to initialize the FreeType library!\n");
@@ -72,17 +73,7 @@ bool init_text()
 
 void destroy_text()
 {
-	sh_free(text);
-}
-
-bool client_open_text(void *smem_start, int offset)
-{
-	text = (Text*)((unsigned char*)smem_start + offset);
-	return true;
-}
-
-void client_close_text()
-{
+	free(text);
 }
 
 void draw_text(const char *txt, Pixmap *pixmap)
@@ -126,14 +117,14 @@ static int draw_glyph(Pixmap *pixmap, int x, int y, char c)
 
 	Rect clipping_rect = get_clipping_rect();
 
-	for(int i=0; i<ft_bmp->rows; i++) {
+	for(unsigned int i=0; i<ft_bmp->rows; i++) {
 		int dest_y = i + y;
 		if(dest_y >= clipping_rect.y + clipping_rect.height) {
 			break;
 		}
 
 		if(dest_y >= clipping_rect.y) {
-			for(int j=0; j<ft_bmp->width; j++) {
+			for(unsigned int j=0; j<ft_bmp->width; j++) {
 				int dest_x = j + x;
 
 				if(dest_x >= clipping_rect.x + clipping_rect.width) {

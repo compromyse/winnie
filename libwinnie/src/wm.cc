@@ -23,11 +23,11 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include <limits.h>
 #include <stdexcept>
 #include <stdio.h>	// TODO
+#include <stdint.h>
 
 #include "sdl/gfx.h"
 #include "sdl/mouse.h"
 #include "mouse_cursor.h"
-#include "shalloc.h"
 #include "text.h"
 #include "window.h"
 #include "winnie.h"
@@ -44,13 +44,13 @@ static void motion(Window *win, int x, int y);
 bool init_window_manager()
 {
 	void *wm_mem;
-	if(!(wm_mem = sh_malloc(sizeof *wm))) {
+	if(!(wm_mem = malloc(sizeof *wm))) {
 		return false;
 	}
 
 	wm = new (wm_mem) WindowManager;
 
-	get_subsys()->wm_offset = (int)((char*)wm - (char*)get_pool());
+	get_subsys()->wm_offset = (intptr_t)(wm);
 
 	return true;
 }
@@ -58,18 +58,7 @@ bool init_window_manager()
 void destroy_window_manager()
 {
 	wm->~WindowManager();
-	sh_free(wm);
-}
-
-
-bool client_open_wm(void *smem_start, int offset)
-{
-	wm = (WindowManager*) ((unsigned char*)smem_start + offset);
-	return true;
-}
-
-void client_close_wm()
-{
+	free(wm);
 }
 
 void WindowManager::create_frame(Window *win)

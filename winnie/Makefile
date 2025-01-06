@@ -1,4 +1,4 @@
-src = $(wildcard src/*.cc) $(wildcard src/fbdev/*.cc) $(wildcard src/sdl/*.cc)
+src = $(wildcard src/*.cc) $(wildcard src/sdl/*.cc)
 obj = $(src:.cc=.o)
 dep = $(obj:.o=.d)
 bin = wserver

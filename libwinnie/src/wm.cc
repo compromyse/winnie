@@ -111,8 +111,7 @@ WindowManager::WindowManager()
   if (!wm) {
     wm = this;
   } else {
-    throw std::runtime_error(
-        "Trying to create a second instance of WindowManager!\n");
+    /* Trying to create a second instance of WindowManager */
   }
 
   root_win = new Window;

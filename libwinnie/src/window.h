@@ -25,7 +25,7 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include <vector>
 
 #include "geom.h"
-#include "event.h"
+#include "sdl/event.h"
 
 class Window {
 public:

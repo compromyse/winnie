@@ -22,7 +22,7 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #ifdef WINNIE_SDL
 #include <SDL/SDL.h>
 
-#include "mouse.h"
+#include "sdl/mouse.h"
 #include "shalloc.h"
 #include "wm.h"
 #include "window.h"

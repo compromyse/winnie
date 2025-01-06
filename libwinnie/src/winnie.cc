@@ -28,8 +28,8 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include <sys/mman.h>
 #include <sys/time.h>
 
-#include "keyboard.h"
-#include "mouse.h"
+#include "sdl/keyboard.h"
+#include "sdl/mouse.h"
 #include "shalloc.h"
 #include "winnie.h"
 

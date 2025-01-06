@@ -23,9 +23,9 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include <stdlib.h>
 #include <SDL/SDL.h>
 
-#include "event.h"
-#include "keyboard.h"
-#include "mouse.h"
+#include "sdl/event.h"
+#include "sdl/keyboard.h"
+#include "sdl/mouse.h"
 #include "wm.h"
 
 enum {

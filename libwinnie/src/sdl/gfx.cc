@@ -24,7 +24,7 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include <stdlib.h>
 #include <SDL/SDL.h>
 
-#include "gfx.h"
+#include "sdl/gfx.h"
 #include "shalloc.h"
 #include "winnie.h"
 

@@ -23,7 +23,7 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include <stdio.h> //TODO
 #include <string.h>
 
-#include "gfx.h"
+#include "sdl/gfx.h"
 #include "window.h"
 #include "wm.h"
 

@@ -22,7 +22,7 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #ifdef WINNIE_SDL
 #include <SDL/SDL.h>
 
-#include "keyboard.h"
+#include "sdl/keyboard.h"
 #include "window.h"
 #include "wm.h"
 

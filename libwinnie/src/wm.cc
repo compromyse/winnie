@@ -24,8 +24,8 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include <stdexcept>
 #include <stdio.h>	// TODO
 
-#include "gfx.h"
-#include "mouse.h"
+#include "sdl/gfx.h"
+#include "sdl/mouse.h"
 #include "mouse_cursor.h"
 #include "shalloc.h"
 #include "text.h"

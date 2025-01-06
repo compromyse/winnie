@@ -22,7 +22,7 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include <ft2build.h>
 #include <freetype/freetype.h>
 
-#include "gfx.h"
+#include "sdl/gfx.h"
 #include "shalloc.h"
 #include "text.h"
 #include "winnie.h"

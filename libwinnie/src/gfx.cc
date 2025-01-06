@@ -24,7 +24,7 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include <algorithm>
 
 #include "geom.h"
-#include "gfx.h"
+#include "sdl/gfx.h"
 
 // used by the polygon rasterizer
 #define MAX_SCANLINES	2048

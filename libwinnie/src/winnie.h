@@ -22,11 +22,11 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #ifndef WINNIE_H_
 #define WINNIE_H_
 
-#include "event.h"
+#include "sdl/event.h"
 #include "geom.h"
-#include "gfx.h"
-#include "keyboard.h"
-#include "mouse.h"
+#include "sdl/gfx.h"
+#include "sdl/keyboard.h"
+#include "sdl/mouse.h"
 #include "text.h"
 #include "window.h"
 #include "wm.h"

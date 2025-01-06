@@ -28,7 +28,7 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include "winnie.h"
 
 #define DPI 72
-#define FONT_PATH "/usr/share/fonts/truetype/ttf-dejavu/DejaVuSansMono.ttf"
+#define FONT_PATH "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 #define FONT_SIZE 16
 
 static int draw_glyph(Pixmap *pixmap, int x, int y, char c);

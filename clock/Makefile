@@ -10,8 +10,8 @@ inc = -Isrc -I../libwinnie/src
 include ../backend.mk
 
 CXX = g++
-CXXFLAGS = -pedantic -Wall -fPIC $(dbg) $(opt) $(inc) $(def) `freetype-config --cflags`
-LDFLAGS = -L../libwinnie/ $(libs) `freetype-config --libs` -lrt -lwinnie -ldl
+CXXFLAGS = -pedantic -Wall -Wextra -O2 $(dbg) $(opt) $(inc) $(def) `pkg-config freetype2 --cflags`
+LDFLAGS = -L../libwinnie/ $(libs) `pkg-config freetype2 --libs` -lrt -lwinnie -ldl
 
 $(lib_so): $(obj)
 	$(CXX) -o $@ -shared $(obj) $(LDFLAGS) -Wl,-rpath=../libwinnie

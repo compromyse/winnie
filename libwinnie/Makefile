@@ -1,5 +1,5 @@
 PREFIX=/usr/local
-src = $(wildcard src/*.cc) $(wildcard src/fbdev/*.cc) $(wildcard src/sdl/*.cc)
+src = $(wildcard src/*.cc) $(wildcard src/sdl/*.cc)
 obj = $(src:.cc=.o)
 dep = $(obj:.o=.d)
 lib_so = libwinnie.so
@@ -10,13 +10,9 @@ inc = -Isrc
 
 include ../backend.mk
 
-ifeq ($(backend), SDL)
-	libs = -lSDL
-endif
-
 CXX = g++
-CXXFLAGS = -pedantic -Wall -fPIC $(dbg) $(opt) $(inc) $(def) `freetype-config --cflags`
-LDFLAGS = $(libs) `freetype-config --libs` -lrt
+CXXFLAGS = -pedantic -Wall $(inc) $(def) `pkg-config freetype2 sdl --cflags --libs` -fPIC
+LDFLAGS = $(libs) `pkg-config freetype2 sdl --libs` -lrt -fPIC -ldl
 
 $(lib_so): $(obj)
 	$(CXX) -o $@ -shared $(obj) $(LDFLAGS)

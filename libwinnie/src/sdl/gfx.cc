@@ -52,7 +52,7 @@ bool init_gfx()
 
 	get_subsys()->graphics_offset = (int)((char*)gfx - (char*)get_pool());
 
-	Rect scr_rect(0, 0, 1024, 768);
+	Rect scr_rect(0, 0, 1280, 853);
 	gfx->screen_rect = scr_rect;
 	gfx->color_depth = 32;
 

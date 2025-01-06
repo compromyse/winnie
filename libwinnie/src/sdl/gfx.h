@@ -36,11 +36,7 @@ int get_color_depth();
 void set_clipping_rect(const Rect &clip_rect);
 const Rect &get_clipping_rect();
 
-void set_cursor_visibility(bool visible);
-
 void gfx_update(const Rect &rect);
-
-void wait_vsync(); // vertical synchronization
 
 void get_rgb_order(int *r, int *g, int *b);
 

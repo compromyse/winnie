@@ -130,11 +130,6 @@ get_clipping_rect()
 }
 
 void
-set_cursor_visibility(bool visible)
-{
-}
-
-void
 gfx_update(const Rect &upd_rect)
 {
   if (SDL_MUSTLOCK(fbsurf)) {
@@ -158,11 +153,6 @@ gfx_update(const Rect &upd_rect)
     SDL_UnlockSurface(fbsurf);
   }
   SDL_UpdateRect(fbsurf, rect.x, rect.y, rect.width, rect.height);
-}
-
-void
-wait_vsync()
-{
 }
 
 void

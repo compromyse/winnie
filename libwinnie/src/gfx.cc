@@ -18,8 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 Author: Eleni Maria Stea <elene.mst@gmail.com>
 */
-#include <algorithm>
 #include <inttypes.h>
+#include <math.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -265,6 +265,18 @@ draw_line(Pixmap *pixmap, int x0, int y0, int x1, int y1, int r, int g, int b)
   }
 }
 
+static inline int
+min(int x, int y)
+{
+  return x < y ? x : y;
+}
+
+static inline int
+max(int x, int y)
+{
+  return x > y ? x : y;
+}
+
 void
 draw_polygon(
     Pixmap *pixmap, int *vpos, int *vtex, int num_verts, int r, int g, int b)
@@ -305,8 +317,8 @@ draw_polygon(
       }
     }
 
-    ystart = std::min(ystart, std::min(y0, y1));
-    yend = std::max(yend, std::max(y0, y1));
+    ystart = min(ystart, min(y0, y1));
+    yend = max(yend, max(y0, y1));
   }
 
   if (ystart < 0)

@@ -36,4 +36,4 @@ void get_pointer_pos(int *x, int *y);
 int get_button_state();
 int get_button(int bn);
 
-#endif	// MOUSE_H_
+#endif // MOUSE_H_

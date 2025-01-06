@@ -23,37 +23,38 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include <stdlib.h>
 #include <string.h>
 
-#include "winnie.h"
 #include "client_plugins.h"
+#include "winnie.h"
 
 static void cleanup();
 
-int main()
+int
+main()
 {
-	if(!winnie_init()) {
-		return 1;
-	}
-	if(!init_client_plugins()) {
-		return 1;
-	}
+  if (!winnie_init()) {
+    return 1;
+  }
+  if (!init_client_plugins()) {
+    return 1;
+  }
 
-	atexit(cleanup);
+  atexit(cleanup);
 
-	Pixmap bg;
-	if(bg.load("data/bg.ppm")) {
-		wm->set_background(&bg);
-	} else {
-		wm->set_background_color(64, 64, 64);
-	}
+  Pixmap bg;
+  if (bg.load("data/bg.ppm")) {
+    wm->set_background(&bg);
+  } else {
+    wm->set_background_color(64, 64, 64);
+  }
 
-
-	while(1) {
-		process_events();
-	}
+  while (1) {
+    process_events();
+  }
 }
 
-static void cleanup()
+static void
+cleanup()
 {
-	destroy_client_plugins();
-	winnie_shutdown();
+  destroy_client_plugins();
+  winnie_shutdown();
 }

@@ -25,4 +25,4 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 bool init_client_plugins();
 void destroy_client_plugins();
 
-#endif	// CLIENT_PLUGINS_H_
+#endif // CLIENT_PLUGINS_H_

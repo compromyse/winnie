@@ -22,8 +22,8 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #ifndef WINNIE_H_
 #define WINNIE_H_
 
-#include "sdl/event.h"
 #include "geom.h"
+#include "sdl/event.h"
 #include "sdl/gfx.h"
 #include "sdl/keyboard.h"
 #include "sdl/mouse.h"
@@ -32,11 +32,11 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include "wm.h"
 
 struct Subsys {
-	int graphics_offset;
-	int keyboard_offset;
-	int mouse_offset;
-	int text_offset;
-	int wm_offset;
+  int graphics_offset;
+  int keyboard_offset;
+  int mouse_offset;
+  int text_offset;
+  int wm_offset;
 };
 
 bool winnie_init();

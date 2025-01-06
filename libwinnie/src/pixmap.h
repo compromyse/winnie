@@ -24,28 +24,29 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 
 #include "geom.h"
 
-class Pixmap {
+class Pixmap
+{
 public:
-	int width, height;
-	unsigned char *pixels;
+  int width, height;
+  unsigned char *pixels;
 
-	Pixmap();
+  Pixmap();
 
-	Pixmap(const Pixmap &pixmap);
-	Pixmap &operator=(const Pixmap& pixmap);
+  Pixmap(const Pixmap &pixmap);
+  Pixmap &operator=(const Pixmap &pixmap);
 
-	~Pixmap();
+  ~Pixmap();
 
-	int get_width() const;
-	int get_height() const;
-	Rect get_rect() const;
+  int get_width() const;
+  int get_height() const;
+  Rect get_rect() const;
 
-	bool set_image(int x, int y, unsigned char *pix = 0);
-	const unsigned char *get_image() const;
-	unsigned char *get_image();
+  bool set_image(int x, int y, unsigned char *pix = 0);
+  const unsigned char *get_image() const;
+  unsigned char *get_image();
 
-	bool load(const char *fname);
-	bool save(const char *fname) const;
+  bool load(const char *fname);
+  bool save(const char *fname) const;
 };
 
-#endif	// PIXMAP_H_
+#endif // PIXMAP_H_

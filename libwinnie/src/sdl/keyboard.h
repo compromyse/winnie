@@ -28,4 +28,4 @@ void destroy_keyboard();
 int get_keyboard_fd();
 void process_keyboard_event();
 
-#endif	// KEYBOARD_H_
+#endif // KEYBOARD_H_

@@ -19,8 +19,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 Author: Eleni Maria Stea <elene.mst@gmail.com>
 */
 
-#include <stdio.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #include <errno.h>
@@ -34,74 +34,81 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 
 static Subsys *subsys;
 
-bool winnie_init()
+bool
+winnie_init()
 {
-	if(!(subsys = (Subsys*)malloc(sizeof *subsys))) {
-		return false;
-	}
+  if (!(subsys = (Subsys *) malloc(sizeof *subsys))) {
+    return false;
+  }
 
-	if(!init_gfx()) {
-		return false;
-	}
+  if (!init_gfx()) {
+    return false;
+  }
 
-	if(!init_window_manager()) {
-		return false;
-	}
+  if (!init_window_manager()) {
+    return false;
+  }
 
-	if(!init_keyboard()) {
-		return false;
-	}
+  if (!init_keyboard()) {
+    return false;
+  }
 
-	if(!init_mouse()) {
-		return false;
-	}
+  if (!init_mouse()) {
+    return false;
+  }
 
-	if(!init_text()) {
-		return false;
-	}
+  if (!init_text()) {
+    return false;
+  }
 
-	wm->invalidate_region(get_screen_size());
-	return true;
+  wm->invalidate_region(get_screen_size());
+  return true;
 }
 
-void winnie_shutdown()
+void
+winnie_shutdown()
 {
-	destroy_gfx();
-	destroy_keyboard();
-	destroy_mouse();
-	destroy_text();
-	destroy_window_manager();
+  destroy_gfx();
+  destroy_keyboard();
+  destroy_mouse();
+  destroy_text();
+  destroy_window_manager();
 
-	free(subsys);
+  free(subsys);
 }
 
-bool winnie_open()
+bool
+winnie_open()
 {
-	subsys = (Subsys*)malloc(sizeof(Subsys));
+  subsys = (Subsys *) malloc(sizeof(Subsys));
 
-	return true;
+  return true;
 }
 
-void winnie_close()
+void
+winnie_close()
 {
 }
 
-long winnie_get_time()
+long
+winnie_get_time()
 {
-	static struct timeval init_tv;
-	struct timeval tv;
+  static struct timeval init_tv;
+  struct timeval tv;
 
-	gettimeofday(&tv, 0);
+  gettimeofday(&tv, 0);
 
-	if(!tv.tv_sec && !tv.tv_usec) {
-		init_tv = tv;
-		return 0;
-	}
+  if (!tv.tv_sec && !tv.tv_usec) {
+    init_tv = tv;
+    return 0;
+  }
 
-	return (tv.tv_usec - init_tv.tv_usec) / 1000 + (tv.tv_sec - init_tv.tv_sec) * 1000;
+  return (tv.tv_usec - init_tv.tv_usec) / 1000
+         + (tv.tv_sec - init_tv.tv_sec) * 1000;
 }
 
-Subsys *get_subsys()
+Subsys *
+get_subsys()
 {
-	return subsys;
+  return subsys;
 }

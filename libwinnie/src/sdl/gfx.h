@@ -27,6 +27,10 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 bool init_gfx();
 void destroy_gfx();
 
+void gfx_update(const Rect &rect);
+
+/* TODO: Move these to ../gfx.h & ../gfx.cc */
+
 unsigned char *get_framebuffer();
 Pixmap *get_framebuffer_pixmap();
 
@@ -35,8 +39,6 @@ int get_color_depth();
 
 void set_clipping_rect(const Rect &clip_rect);
 const Rect &get_clipping_rect();
-
-void gfx_update(const Rect &rect);
 
 void get_rgb_order(int *r, int *g, int *b);
 

@@ -24,6 +24,7 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include <string.h>
 
 #include "client_plugins.h"
+#include "pixmap.h"
 #include "winnie.h"
 
 static void cleanup();

@@ -25,7 +25,7 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "sdl/gfx.h"
+#include "gfx.h"
 #include "winnie.h"
 
 static SDL_Surface *fbsurf;

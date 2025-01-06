@@ -28,6 +28,7 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include <sys/mman.h>
 #include <sys/time.h>
 
+#include "sdl/gfx.h"
 #include "sdl/keyboard.h"
 #include "sdl/mouse.h"
 #include "winnie.h"
@@ -67,17 +68,6 @@ winnie_shutdown()
   destroy_mouse();
   destroy_text();
   destroy_window_manager();
-}
-
-bool
-winnie_open()
-{
-  return true;
-}
-
-void
-winnie_close()
-{
 }
 
 long

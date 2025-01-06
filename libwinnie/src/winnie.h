@@ -22,20 +22,14 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #ifndef WINNIE_H_
 #define WINNIE_H_
 
-#include "geom.h"
-#include "sdl/event.h"
+#include "gfx.h"
 #include "sdl/gfx.h"
-#include "sdl/keyboard.h"
-#include "sdl/mouse.h"
 #include "text.h"
 #include "window.h"
 #include "wm.h"
 
 bool winnie_init();
 void winnie_shutdown();
-
-bool winnie_open();
-void winnie_close();
 
 long winnie_get_time();
 

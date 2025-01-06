@@ -25,6 +25,7 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include <stdint.h>
 #include <stdio.h>
 
+#include "gfx.h"
 #include "mouse_cursor.h"
 #include "sdl/gfx.h"
 #include "sdl/mouse.h"

@@ -24,6 +24,7 @@ Author: Eleni Maria Stea <elene.mst@gmail.com>
 #include <string.h>
 
 #include "geom.h"
+#include "gfx.h"
 #include "sdl/gfx.h"
 
 // used by the polygon rasterizer
